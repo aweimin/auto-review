@@ -1,0 +1,90 @@
+{
+	"name": "autoreview",
+	"displayName": "Auto Review",
+	"publisher": "wangzhen",
+	"description": "cops-review",
+	"version": "0.0.4",
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onFileSystem:file"
+	],
+	"main": "./src/index.js",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Auto Review",
+			"properties": {
+				"autoReview.copsPath": {
+					"type": "string",
+					"default": "",
+					"description": "Cops File 路径"
+				},
+				"autoReview.serverURL": {
+					"type": "string",
+					"default": "",
+					"description": "Cops 服务器 URL"
+				},
+				"autoReview.yourName": {
+					"type": "string",
+					"default": "",
+					"description": "你的名字"
+				},
+				"autoReview.showMessage": {
+					"type": "boolean",
+					"default": false,
+					"description": "启用提示消息"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "review.autoReview",
+				"title": "Auto Review"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "review.autoReview",
+				"key": "ctrl+f10",
+				"mac": "cmd+f10",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "review.autoReview",
+					"group": "review"
+				}
+			],
+			"editor/title": [],
+			"editor/title/context": [],
+			"explorer/context": [
+				{
+					"command": "review.autoReview",
+					"group": "review"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.38.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.2"
+	}
+}
